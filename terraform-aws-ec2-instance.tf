@@ -80,6 +80,7 @@ resource "aws_instance" "bastion" {
   subnet_id                   = aws_subnet.aws_net.id
   private_ip                  = var.aws_bastion_private_ip
   source_dest_check           = true # disable if implementing NAT
+  monitoring                  = true
   vpc_security_group_ids = [
     aws_security_group.bastion_sg.id
   ]
@@ -108,6 +109,11 @@ resource "aws_instance" "bastion" {
     private_key = file(var.aws_ssh_private_key)
     host        = self.public_ip
   }
+
+  metadata_options {
+    http_tokens           = "required"
+  }
+  
 }
 
 resource "aws_security_group" "bastion_sg" {
