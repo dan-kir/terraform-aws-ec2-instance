@@ -17,9 +17,9 @@ jobs:
         iac_version: 'v14'
         policy_type: 'aws'
         only_warn: true
+        sarif_upload: true
         #scm_token: ${{ secrets.ACCESS_TOKEN }}
         #verbose: true
-        #sarif_upload: true
         #non_recursive:
         #iac_dir:
         #policy_path:
