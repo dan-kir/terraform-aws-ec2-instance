@@ -75,7 +75,7 @@ resource "aws_instance" "bastion" {
   ami                         = var.aws_ami[var.aws_region]
   availability_zone           = var.aws_az
   instance_type               = var.aws_instance_size
-  user_data = file("scripts/bastion_bootstrap.sh")
+  user_data                   = file("scripts/bastion_bootstrap.sh")
   associate_public_ip_address = true
   subnet_id                   = aws_subnet.aws_net.id
   private_ip                  = var.aws_bastion_private_ip
@@ -111,9 +111,10 @@ resource "aws_instance" "bastion" {
   }
 
   metadata_options {
-    http_tokens           = "required"
+    http_endpoint = "enabled"
+    http_tokens   = "required"
   }
-  
+
 }
 
 resource "aws_security_group" "bastion_sg" {

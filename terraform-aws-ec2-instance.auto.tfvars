@@ -26,7 +26,7 @@ aws_instance_size = "t2.medium"
 aws_vpc_cidr = "10.0.0.0/16"
 
 ## AWS Network Variables
-aws_net_cidr      = "10.0.1.0/24"
+aws_net_cidr = "10.0.1.0/24"
 
 ## AWS Instance Private IP Addresses
-aws_bastion_private_ip    = "10.0.1.10"
+aws_bastion_private_ip = "10.0.1.10"
