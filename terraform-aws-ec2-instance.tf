@@ -84,6 +84,12 @@ resource "aws_instance" "bastion" {
   vpc_security_group_ids = [
     aws_security_group.bastion_sg.id
   ]
+
+  metadata_options {
+    http_endpoint = "enabled"
+    http_tokens   = "required"
+  }
+
   root_block_device {
     delete_on_termination = true
     volume_type           = "gp2"
@@ -109,12 +115,6 @@ resource "aws_instance" "bastion" {
     private_key = file(var.aws_ssh_private_key)
     host        = self.public_ip
   }
-
-  metadata_options {
-    http_endpoint = "enabled"
-    http_tokens   = "required"
-  }
-
 }
 
 resource "aws_security_group" "bastion_sg" {
