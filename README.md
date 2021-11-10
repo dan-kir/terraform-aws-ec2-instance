@@ -20,6 +20,10 @@ The following is configurable in `terraform-aws-ec2-instance.auto.tfvars`
 * Instance Size
 * IP Addressing
 
+Graph
+-------------
+![alt text](terraform-graph.svg "terraform-graph.svg")
+
 License
 -------
 GPL-3.0 License
