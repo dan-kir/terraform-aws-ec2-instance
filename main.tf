@@ -1,24 +1,3 @@
-## Environment Variables - terraform-aws-ec2-instance.auto.tfvars
-variable "aws_region" {}
-variable "aws_az" {}
-variable "aws_ami" { type = map(string) }
-variable "aws_access_key" {}
-variable "aws_secret_key" {}
-variable "aws_ssh_public_key" {}
-variable "aws_ssh_private_key" {}
-variable "aws_instance_size" {}
-variable "aws_vpc_cidr" {}
-variable "aws_net_cidr" {}
-variable "aws_bastion_private_ip" {}
-
-
-## AWS Provider Configuration
-provider "aws" {
-  access_key = var.aws_access_key
-  secret_key = var.aws_secret_key
-  region     = var.aws_region
-}
-
 ## AWS SSH Keypair
 resource "aws_key_pair" "bastion_ssh_key" {
   key_name   = "bastion_ssh_key"
@@ -75,7 +54,7 @@ resource "aws_instance" "bastion" {
   ami                         = var.aws_ami[var.aws_region]
   availability_zone           = var.aws_az
   instance_type               = var.aws_instance_size
-  user_data                   = file("scripts/bastion_bootstrap.sh")
+  user_data                   = file(var.aws_instance_user_data)
   associate_public_ip_address = true
   subnet_id                   = aws_subnet.aws_net.id
   private_ip                  = var.aws_bastion_private_ip
@@ -133,8 +112,4 @@ resource "aws_security_group" "bastion_sg" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-}
-
-output "bastion_eip" {
-  value = aws_eip.bastion_eip.public_ip
 }

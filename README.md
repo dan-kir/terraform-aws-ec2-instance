@@ -6,7 +6,7 @@ Template a VPC, Internet Gateway, Network, Security Groups and Instance with Ela
 
 The public IP address (Elastic IP) will be outputted at completion
 
-Default configurations are for a T2.Medium bastion (jump box) running Debian 11
+Default variables are for a T2.Medium bastion (jump box) running Debian 11
 
 Requirements
 ------------
@@ -14,7 +14,7 @@ Requires Terraform 1.0.8 or later.
 
 Terraform Variables
 --------------
-The following is configurable in `terraform-aws-ec2-instance.auto.tfvars`
+The following is configurable in `variables.tfvars`
 * Region and Availability Zone
 * AMI IDs
 * Application Credentials
@@ -24,7 +24,7 @@ The following is configurable in `terraform-aws-ec2-instance.auto.tfvars`
 
 Graph
 -------------
-![alt text](terraform-graph.svg "terraform-graph.svg")
+![alt text](graph.svg "graph.svg")
 
 License
 -------
