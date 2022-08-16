@@ -72,7 +72,7 @@ resource "aws_instance" "bastion" {
   root_block_device {
     delete_on_termination = true
     volume_type           = "gp2"
-    volume_size           = 32
+    volume_size           = var.aws_instance_disk_size
   }
 
   ## Drop a private ssh key on bastion

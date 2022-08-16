@@ -25,6 +25,9 @@ aws_instance_user_data = "scripts/bastion_bootstrap.sh"
 ## https://aws.amazon.com/ec2/instance-types/
 aws_instance_size = "t2.medium"
 
+## AWS Instance disk size in GBs
+aws_instance_disk_size = 8
+
 ## AWS VPC Network Variables
 aws_vpc_cidr = "10.0.0.0/16"
 

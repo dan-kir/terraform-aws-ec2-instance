@@ -27,6 +27,9 @@ variable "aws_instance_user_data" {
 variable "aws_instance_size" {
   description = "The instance type to use for the instance"
 }
+variable "aws_instance_disk_size" {
+  description = "Size of the volume in gibibytes (GiB)."
+}
 variable "aws_vpc_cidr" {
   description = "The IPv4 CIDR block for the VPC"
 }
